@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produk extends Model
+class Order extends Model
 {
     use HasFactory;
-
-    protected $table="produk";
     protected $fillable = [
-        'gambar', 'judul', 'permalink', 'kategori_id', 'user_id', 'deskripsi', 'berat', 'harga', 'stok', 'diskon'
+        'invoice_id', 'product_id', 'qty', 'price'
     ];
 }

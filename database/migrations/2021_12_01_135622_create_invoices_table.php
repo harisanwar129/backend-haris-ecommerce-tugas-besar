@@ -17,28 +17,28 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->string('invoice');
             $table->unsignedBigInteger('customer_id');
-            $table->string('kurir');
-            $table->string('kurir_servis');
-            $table->bigInteger('kurir_harga');
-            $table->integer('berat');
-            $table->string('nama');
-            $table->string('nohp');
-            $table->unsignedBigInteger('kota_id');
-            $table->unsignedBigInteger('provinsi_id');
-            $table->text('alamat');
+            $table->string('courier');
+            $table->string('courier_service');
+            $table->bigInteger('courier_cost');
+            $table->integer('weight');
+            $table->string('name');
+            $table->string('phone');
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('province_id');
+            $table->text('address');
             $table->enum('status', array('pending', 'success', 'expired', 'failed'));
             $table->bigInteger('grand_total');
             $table->string('snap_token')->nullable();
             $table->timestamps();
       
             //relationship customer
-            $table->foreign('customer_id')->references('id')->on('customer');
+            $table->foreign('customer_id')->references('id')->on('customers');
       
             //relationship city
-            $table->foreign('kota_id')->references('id')->on('kota');
+            $table->foreign('city_id')->references('id')->on('cities');
       
             //relationship province
-            $table->foreign('provinsi_id')->references('id')->on('provinsi');
+            $table->foreign('province_id')->references('id')->on('provinces');
         });
     }
 

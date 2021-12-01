@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pesanan extends Model
+class Province extends Model
 {
     use HasFactory;
-
-    protected $table="pesanan";
     protected $fillable = [
-        'invoice_id', 'produk_id', 'jumlah', 'harga'
+        'province_id', 'name'
     ];
 }

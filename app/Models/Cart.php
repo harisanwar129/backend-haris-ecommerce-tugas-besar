@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kategori extends Model
+class Cart extends Model
 {
     use HasFactory;
 
-    protected $table="kategori";
     protected $fillable = [
-        'nama', 'permalink', 'gambar'
+        'product_id', 'customer_id', 'qty', 'price', 'weight'
     ];
-
 }

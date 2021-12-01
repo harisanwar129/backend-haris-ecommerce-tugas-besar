@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKotasTable extends Migration
+class CreateProvincesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateKotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kotas', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('provinsi_id');
-            $table->integer('kota_id');
-            $table->string('nama');
+            $table->integer('province_id');
+            $table->string('name');
             $table->timestamps();
-            
-            //relationship province
-            $table->foreign('provinsi_id')->references('id')->on('provinsi');
         });
     }
 
@@ -32,6 +28,6 @@ class CreateKotasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kotas');
+        Schema::dropIfExists('provinces');
     }
 }
