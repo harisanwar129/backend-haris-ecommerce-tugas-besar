@@ -11,4 +11,16 @@ class Category extends Model
     protected $fillable = [
         'name', 'slug', 'image'
     ];
+
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+
+    public function getImageAttribute($image)
+    {
+        return asset('storage/categories/' . $image);
+    }
 }

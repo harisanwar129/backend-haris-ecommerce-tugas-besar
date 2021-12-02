@@ -13,7 +13,26 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix('admin')->group(function () {
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    //route login
+    Route::post('/login', [App\Http\Controllers\Api\Admin\LoginController::class, 'index', ['as' => 'admin']]);
+
+    //group route with middleware "auth:api_admin"
+    Route::group(['middleware' => 'auth:api_admin'], function() {
+
+        //data user
+        Route::get('/user', [App\Http\Controllers\Api\Admin\LoginController::class, 'getUser', ['as' => 'admin']]);
+
+        //refresh token JWT
+        Route::get('/refresh', [App\Http\Controllers\Api\Admin\LoginController::class, 'refreshToken', ['as' => 'admin']]);
+
+        //logout
+        Route::post('/logout', [App\Http\Controllers\Api\Admin\LoginController::class, 'logout', ['as' => 'admin']]);
+    //dashboard
+Route::get('/dashboard', [App\Http\Controllers\Api\Admin\DashboardController::class, 'index', ['as' => 'admin']]);
+
+Route::apiResource('/categories', App\Http\Controllers\Api\Admin\CategoryController::class, ['except' => ['create', 'edit'], 'as' => 'admin']);
+
+    });
 });
