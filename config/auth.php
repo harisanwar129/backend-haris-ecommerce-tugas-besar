@@ -39,13 +39,19 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-
-        'api_admin' => [			// <-- atur menjadi "api_admin"
-            'driver' => 'jwt',		// <-- atur menjadi "jwt"
-            'provider' => 'users',
-            'hash' => false,
-        ],
+         ],
+    
+         'api_admin' => [            	// <-- atur menjadi "api_admin"
+             'driver' => 'jwt',      	// <-- atur menjadi "jwt"
+             'provider' => 'users',
+             'hash' => false,
+         ],
+         
+         'api_customer' => [         	// <-- atur menjadi "api_customer"
+             'driver' => 'jwt',      	// <-- atur menjadi "jwt"
+             'provider' => 'customers',
+             'hash' => false,
+         ],
     ],
 
     /*
@@ -70,11 +76,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
+        ],
     ],
 
     /*
